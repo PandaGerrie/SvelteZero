@@ -4,6 +4,8 @@
     export let about = 'true'; 
     export let cta = 'true'; 
     export let back = '';
+    export let feat1 = '';
+    export let feat2 = '';
 </script>
 
 <!-- Title and text -->
@@ -11,6 +13,17 @@
     <h1 class="mb-2"> {title} </h1>
     <p class="text-sm text-rose-100/[.3] leading-relaxed"> {description}</p>
 </div>
+<!-- PROJECT FEATURES -->
+{#if feat1 != ''}
+<div class=" p-y-8 mt-10 mb-8 px-8">
+    <h2 class="mb-5"> Project features </h2>
+    <p class="pb-4 text-sm text-rose-100/[.3] leading-relaxed"> {feat1} </p>
+    {#if feat2 != ''}
+    <p class="pb-5 text-sm text-rose-100/[.3] leading-relaxed"> {feat2} </p>
+    {/if}
+</div>
+{/if}
+
 
 {#if about != 'false'}
 <!-- About -->

@@ -21,6 +21,7 @@
                     id
                     basicPageInfo {
                     title
+                    category
                     cardGallery {
                         url
                     }
@@ -55,6 +56,8 @@
         console.error('Fetch error:', err);
       }
     });
+
+    let description = 'Project Description';
   </script>
 
 {#if error}
@@ -62,10 +65,18 @@
 {:else}
 <ul class="projectOverview">
   {#each data as post}
-    <li>
+    <li class="py-14 border border-rose-200/[.1]">
         <a href="http://localhost:5173/projects/{post.id}">
-            <img class="coverImg" src="{post.basicPageInfo.coverImage.url}">
-            <h3> {post.basicPageInfo.title} </h3>
+            <div class="cardPrev"> 
+              {#each post.basicPageInfo.cardGallery as card}
+                <img src="{card.url}">
+              {/each}
+            </div>
+            <div class="cardLabels">
+              <h3 class="mt-6"> {post.basicPageInfo.title} </h3>
+              <p> {post.basicPageInfo.category} </p>
+              <button class="mt-8 primBtn"> View project </button>
+          </div>
         </a>
 
     </li>
@@ -79,17 +90,105 @@
       display: flex;
       column-gap: 20px;
       row-gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
   }
-
   ul.projectOverview li{
-      padding: 15px;
-      border: 1px solid #E0E0E0; 
+      border-radius: 15px; 
+      width: calc(50% - 10px);
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      background-color: rgba(25, 20, 20, .5);
+      box-sizing: border-box;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 1.4s;
+      opacity: 0;
+      transition: .4s;
   }
-
+  ul.projectOverview li:hover{
+    background-color: rgba(35, 5, 5, .6);
+  }
+  ul.projectOverview li:hover .primBtn{
+		text-transform: uppercase;
+		background-color: rgba(0,0,0,0);
+		border: 1px solid #bb6666; 
+		color: #bb6666; 
+		padding: 5px 20px; 
+		font-size: .9rem;
+  }
+  ul.projectOverview li a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
   ul.projectOverview li h3{
-      margin-top: 5px; 
+      font-size: 1.7rem;
+  }
+  ul.projectOverview li p{
+     opacity: .3;
+     font-size: 1rem;
   }
   img.coverImg{
       width: 300px; 
+  }
+  .cardPrev{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cardPrev img{
+    height: auto;
+    -webkit-box-shadow: 0px 0px 38px 1px rgba(0,0,0,0.63);
+    -moz-box-shadow: 0px 0px 38px 1px rgba(0,0,0,0.63);
+    box-shadow: 0px 0px 38px 1px rgba(0,0,0,0.63);
+    border-radius: 0px;
+    transition: .2s; 
+  }
+  .cardPrev img:nth-child(1) {
+    transform: rotate(-8deg);
+    width: 15%;
+    z-index: 3;
+    margin-right: -20px;
+  }
+  .cardPrev img:nth-child(2) {
+    transform: rotate(-4deg);
+    width: 17%;
+    z-index: 4;
+    margin-right: -20px;
+  }
+  .cardPrev img:nth-child(3) {
+    width: 20%;
+    z-index: 5;
+  }
+  .cardPrev img:nth-child(4) {
+    transform: rotate(4deg);
+    width: 17%;
+    z-index: 4;
+    margin-left: -20px;
+  }
+  .cardPrev img:nth-child(5) {
+    transform: rotate(8deg);
+    width: 15%;
+    z-index: 3;
+    margin-left: -20px;
+  }
+  .cardPrev img:hover{
+    height: auto;
+    z-index: 6;
+    transform: rotate(0deg) scale(1.3);
+    -webkit-box-shadow: 0px 0px 38px 4px rgba(0,0,0,0.63);
+    -moz-box-shadow: 0px 0px 38px 4px rgba(0,0,0,0.63);
+    box-shadow: 0px 0px 38px 4px rgba(0,0,0,0.63);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>

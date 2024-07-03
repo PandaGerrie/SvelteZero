@@ -7,8 +7,8 @@ import Side from '$lib/sideBar.svelte'
 <section>
   <div class="container mx-auto">
     
-    <div class="grid grid-cols-4 border-y-2 border-rose-200/[.1]">
-      <div class="col-span-1 align-start py-8 border-e-2 border-rose-200/[.1] sideBar">
+    <div class="grid grid-cols-4 border-y-2 border-amber-50/[.1]">
+      <div class="col-span-1 align-start py-8 border-e-2 border-amber-50/[.1] sideBar">
        <Side title="Projects" />
       </div>
       <div class="col-span-3 px-10 py-8 contentBar">
@@ -27,13 +27,6 @@ import Side from '$lib/sideBar.svelte'
 </section>
 
 <style>
-  .sideBar{
-    background-color: rgba(10, 10, 10, 1);
-  }
-  .contentBar{
-    background-color: rgba(16, 16, 16, 1);
-    min-height: 100vh;
-  }
   .loader {
     --uib-size: 60px;
     --uib-color: #dfdddd;

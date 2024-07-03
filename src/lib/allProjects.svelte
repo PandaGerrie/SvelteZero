@@ -65,7 +65,7 @@
 {:else}
 <ul class="projectOverview">
   {#each data as post}
-    <li class="py-14 border border-rose-200/[.1]">
+    <li class="py-14 border border-amber-50/[.1]">
         <a href="http://localhost:5173/projects/{post.id}">
             <div class="cardPrev mb-10"> 
               {#each post.basicPageInfo.cardGallery as card}
@@ -100,7 +100,7 @@
       display: flex;
       justify-content: center;
       text-align: center;
-      background-color: rgba(25, 20, 20, .5);
+      background-color: rgba(15, 15, 15, 1);
       box-sizing: border-box;
       animation: fadeIn 2s ease-in-out forwards;
       animation-delay: 1.4s;
@@ -112,7 +112,7 @@
     margin: auto;  
   }
   ul.projectOverview li:hover{
-    background-color: rgba(35, 5, 5, .6);
+    background-color: rgba(0, 0, 0, 1);
   }
   ul.projectOverview li:hover .primBtn{
 		text-transform: uppercase;

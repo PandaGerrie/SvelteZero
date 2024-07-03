@@ -7,7 +7,8 @@
     let feat1 = '';
     let feat2 = '';
     let feat3 = '';
-    let title = ''; 
+    let title = '';
+    let components; 
 
     let data = [];
     let error = null;
@@ -31,7 +32,18 @@
                     projectFeature3
                     description
                     basicPageInfo {
-                    title
+                        title
+                    }
+                    components {
+                    __typename
+                    ... on CardType {
+                        id
+                        title
+                        typeDescription
+                        cards(first: 30){
+                            url
+                        }
+                        }
                     }
                 }
             }
@@ -56,14 +68,14 @@
         feat2 = data.projectFeature2;
         feat3 = data.projectFeature3;
         title = data.basicPageInfo.title;
+        components = data.components;
         console.log(description);
         console.log(data);
+        console.log(components);
       } catch (err) {
         error = err.message;
         console.error('Fetch error:', err);
-      }
-
-      
+      }    
     });
     
 </script>
@@ -71,12 +83,25 @@
 <section>
     <div class="container mx-auto">
       
-      <div class="grid grid-cols-4 border-y-2 border-rose-200/[.1]">
-        <div class="col-span-1 align-start py-8 border-e-2 border-rose-200/[.1] sideBar">
+      <div class="grid grid-cols-4 border-y-2 border-amber-50/[.1]">
+        <div class="col-span-1 align-start py-8 border-e-2 border-amber-50/[.1] sideBar">
          <Side title="{title}" about="false" cta="false" description="{description}" back="/projects" feat1="{feat1}" feat2="{feat2}" feat3="{feat3}"/>
         </div>
-        <div class="col-span-3 px-10 py-8 contentBar">
+        <div class="col-span-3 px-10 py-10 contentBar">
             <!-- PROJECT ASSETS HERE -->
+             {#if components && components.length > 0}
+                {#each components as comp}
+                <div class="cardTypeBlock pb-10 mb-10 border-b border-amber-50/[.1]">
+                    <h2 class="text-2xl">{comp.title}</h2>
+                    <p class="text-sm text-white/[.5] leading-relaxed mb-5 mt-1">{comp.typeDescription}</p>
+                    <div class="cardgrid grid grid-cols-9 gap-4 pb-4">
+                        {#each comp.cards as card}
+                            <img class="col-span-1 gridCard rounded-md" src="{card.url}">
+                        {/each}
+                    </div>
+                </div>
+                {/each}
+             {/if}
         </div>
       </div>
     </div>
@@ -89,3 +114,14 @@
       </div> 
     </div>
 </section>
+
+<style>
+    .gridCard{
+        width: 100%;
+        transition: .3s;
+    }
+
+    .gridCard:hover{
+       transform: scale(2.4);
+    }
+</style>

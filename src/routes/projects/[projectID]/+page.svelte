@@ -3,10 +3,12 @@
     import { onMount } from 'svelte';
     import {page} from '$app/stores';
     let projectID = $page.params.projectID
-    let description;
-    let feat1;
-    let feat2;
-  
+    let description = '';
+    let feat1 = '';
+    let feat2 = '';
+    let feat3 = '';
+    let title = ''; 
+
     let data = [];
     let error = null;
   
@@ -26,6 +28,7 @@
                 projectObject(where: {id: "` + projectID + `"}) {
                     projectFeature1
                     projectFeature2
+                    projectFeature3
                     description
                     basicPageInfo {
                     title
@@ -51,6 +54,8 @@
         description = data.description;
         feat1 = data.projectFeature1;
         feat2 = data.projectFeature2;
+        feat3 = data.projectFeature3;
+        title = data.basicPageInfo.title;
         console.log(description);
         console.log(data);
       } catch (err) {
@@ -68,7 +73,7 @@
       
       <div class="grid grid-cols-4 border-y-2 border-rose-200/[.1]">
         <div class="col-span-1 align-start py-8 border-e-2 border-rose-200/[.1] sideBar">
-         <Side title="Project Name" about="false" cta="false" description="{description}" back="/projects" feat1="{feat1}" feat2="{feat2}"/>
+         <Side title="{title}" about="false" cta="false" description="{description}" back="/projects" feat1="{feat1}" feat2="{feat2}" feat3="{feat3}"/>
         </div>
         <div class="col-span-3 px-10 py-8 contentBar">
             <!-- PROJECT ASSETS HERE -->

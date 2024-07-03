@@ -20,17 +20,17 @@
                 projectObjects {
                     id
                     basicPageInfo {
-                    title
-                    category
-                    cardGallery {
-                        url
-                    }
-                    backgroundColorGradient {
-                        hex
-                    }
-                    coverImage {
-                        url
-                    }
+                      title
+                      category
+                      icon {
+                          url
+                      }
+                      cardGallery {
+                          url
+                      }
+                      backgroundColorGradient {
+                          hex
+                      }
                     }
                 }
             }
@@ -67,13 +67,14 @@
   {#each data as post}
     <li class="py-14 border border-rose-200/[.1]">
         <a href="http://localhost:5173/projects/{post.id}">
-            <div class="cardPrev"> 
+            <div class="cardPrev mb-10"> 
               {#each post.basicPageInfo.cardGallery as card}
                 <img src="{card.url}">
               {/each}
             </div>
             <div class="cardLabels">
-              <h3 class="mt-6"> {post.basicPageInfo.title} </h3>
+              <img class="projectIcon" src="{post.basicPageInfo.icon.url}">
+              <h3 class="mt-2"> {post.basicPageInfo.title} </h3>
               <p> {post.basicPageInfo.category} </p>
               <button class="mt-8 primBtn"> View project </button>
           </div>
@@ -105,6 +106,10 @@
       animation-delay: 1.4s;
       opacity: 0;
       transition: .4s;
+  }
+  .projectIcon{
+    width: 25px;
+    margin: auto;  
   }
   ul.projectOverview li:hover{
     background-color: rgba(35, 5, 5, .6);

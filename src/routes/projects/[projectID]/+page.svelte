@@ -94,7 +94,7 @@
                 <div class="cardTypeBlock pb-10 mb-10 border-b border-amber-50/[.1]">
                     <h2 class="text-2xl">{comp.title}</h2>
                     <p class="text-sm text-white/[.5] leading-relaxed mb-5 mt-1">{comp.typeDescription}</p>
-                    <div class="cardgrid grid grid-cols-9 gap-4 pb-4">
+                    <div class="cardgrid grid grid-cols-8 gap-3 pb-4">
                         {#each comp.cards as card}
                             <img class="col-span-1 gridCard rounded-md" src="{card.url}">
                         {/each}
@@ -116,12 +116,25 @@
 </section>
 
 <style>
+    .cardTypeBlock{
+        opacity: 0;
+        animation: fadeIn 1.5s ease-in-out forwards;
+        animation-delay: 1s;
+    }
     .gridCard{
         width: 100%;
         transition: .3s;
+        
     }
-
     .gridCard:hover{
-       transform: scale(2.4);
+       transform: scale(1.9);
     }
+    @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 </style>

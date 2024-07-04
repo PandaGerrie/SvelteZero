@@ -102,8 +102,8 @@
       text-align: center;
       background-color: rgba(15, 15, 15, 1);
       box-sizing: border-box;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 1.4s;
+      animation: fadeIn 1.5s ease-in-out forwards;
+      animation-delay: 1s;
       opacity: 0;
       transition: .4s;
   }

@@ -75,7 +75,7 @@
 <div class="ctaBlock p-y-8 mt-10 mb-8 px-8">
     <h2 class="mb-2"> Got a challenge? </h2>
     <p class="text-sm leading-relaxed mb-5"> Leave me a message and maybe we'll work together on your next project! </p>
-    <a class="primBtn" href="mailto:gerrie@purplepanda.be"> gerrie@purplepanda.be </a>
+    <a class="fivButton" target="_BLANK" href="https://nl.fiverr.com/gertjanfeijens/create-your-heroes-creatures-and-other-characters"> <img src="https://eu-central-1-shared-euc1-02.graphassets.com/cly35s2yk00dm07w00vjm746c/cly5hctuk1bcf07ussm2p3nac" style="width: 25px; "/> Let me know on Fivrr! </a>
 </div>
 {/if}
 

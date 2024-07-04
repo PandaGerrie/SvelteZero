@@ -7,6 +7,9 @@
     export let feat1 = '';
     export let feat2 = '';
     export let feat3 = '';
+    export let revName = '';
+    export let revBody = '';
+    export let revImg = '';
 </script>
 
 <!-- Title and text -->
@@ -42,11 +45,22 @@
 </div>
 {/if}
 
+<!-- Title and text -->
+{#if revBody != ''}
+<div class="px-8 py-8">
+    <h2 class="mb-3"> User Feedback </h2>
+    <img style="width:100px;" src="{revImg}" alt="review stars">
+    <p class="mt-3 text-sm leading-relaxed"> {revBody}</p>
+    <p class="opacity-50 mt-4 text-sm leading-relaxed"> - {revName}</p>
+    
+</div>
+{/if}
+
 {#if cta != 'false'}
 <!-- CTA -->
 <div class="ctaBlock p-y-8 mt-10 mb-8 px-8">
     <h2 class="mb-2"> Got a challenge? </h2>
-    <p class="text-sm   leading-relaxed mb-5"> Leave me a message and maybe we'll work together on your next project! </p>
+    <p class="text-sm leading-relaxed mb-5"> Leave me a message and maybe we'll work together on your next project! </p>
     <a class="primBtn" href="mailto:gerrie@purplepanda.be"> gerrie@purplepanda.be </a>
 </div>
 {/if}

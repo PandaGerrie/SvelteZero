@@ -1,30 +1,34 @@
 {
-	"name": "projzero",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite run dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/adapter-cloudflare": "^4.6.0",
-		"@sveltejs/kit": "^2.5.18",
-		"@sveltejs/vite-plugin-svelte": "^3.0.0",
-		"@types/eslint": "^8.56.7",
-		"eslint": "^9.0.0",
-		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-svelte": "^2.36.0",
-		"globals": "^15.0.0",
-		"prettier": "^3.1.1",
-		"prettier-plugin-svelte": "^3.1.2",
-		"svelte": "^4.2.7",
-		"vite": "^5.0.3",
-		"wrangler": "^3.63.1",
-		"yarn": "^1.22.22"
-	},
-	"type": "module"
+    "name": "projzero",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "vite run dev",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "prettier --check . && eslint .",
+        "format": "prettier --write ."
+    },
+    "devDependencies": {
+        "@sveltejs/adapter-auto": "^3.0.0",
+        "@sveltejs/adapter-cloudflare": "^4.6.0",
+        "@sveltejs/kit": "^2.5.18",
+        "@sveltejs/vite-plugin-svelte": "^3.0.0",
+        "@types/eslint": "^8.56.7",
+        "eslint": "^9.0.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-svelte": "^2.36.0",
+        "globals": "^15.0.0",
+        "prettier": "^3.1.1",
+        "prettier-plugin-svelte": "^3.1.2",
+        "svelte": "^4.2.7",
+        "vite": "^5.0.3",
+        "wrangler": "^3.63.1",
+        "yarn": "^1.22.22",
+        "@swc/core": "^1.2.0",
+        "react-dom": "^17.0.0",
+        "typescript": "^4.0.0",
+        "webpack": "^5.0.0"
+    },
+    "type": "module"
 }

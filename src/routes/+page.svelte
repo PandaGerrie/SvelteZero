@@ -1,1 +1,4 @@
-  <h1> Welcome to SvelteKit </h1>
+  <script>
+    window.href="/projects";
+  </script>
+  <h1> Redsirecting </h1>

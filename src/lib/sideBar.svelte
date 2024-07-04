@@ -10,14 +10,28 @@
     export let revName = '';
     export let revBody = '';
     export let revImg = '';
+    let isOpen = false;
+
+    function toggleOpen(){
+        isOpen = !isOpen;
+    }
 </script>
 
+{#if back != ''}
+<div class="back mt-3 mb-1 px-8">
+    <a href="{back}"> &larr; GO BACK </a>
+</div>
+{/if}
 <!-- Title and text -->
 <div class="px-8">
     <h1 class="mb-2"> {title} </h1>
     <p class="text-sm   leading-relaxed"> {description}</p>
 </div>
-<!-- PROJECT FEATURES -->
+<a href="" class="mt-5 px-6 py-6 border-y border-amber-50/[.2] text-amber-50/[.5] sidebarGradient moreInfoBtn" on:click={toggleOpen} class:open={isOpen}> Read more &rsaquo; </a>
+<div class="moreInfo" class:open={isOpen}>
+
+
+<!-- PROJECT FEATURE> -->
 {#if feat1 != ''}
 <div class=" mt-10 px-8 py-8 border-y border-amber-50/[.2] sidebarGradient">
     <h2 class="mb-5"> Project features </h2>
@@ -65,16 +79,8 @@
 </div>
 {/if}
 
-{#if back != ''}
-<div class="back p-y-8 mt-10 mb-8 px-8">
-    <a href="{back}"> &larr; Go back </a>
 </div>
-{/if}
-
-<div class="sideLogo">
-    <img src="/logoW.png" />
-</div>
-
+<a href="" class="px-6 py-6 text-amber-50/[.5] sidebarGradient lessInfoBtn" on:click={toggleOpen} class:open={isOpen} > Read less &rsaquo; </a>
 
 <style>
     .back{
@@ -103,5 +109,34 @@
     .sideLogo img{
         width: 120px;
         margin: 10px auto; 
+    }
+
+    .moreInfoBtn, .lessInfoBtn{
+        display: none;
+    }
+
+
+
+    @media (max-width: 992px){
+        .moreInfo{
+            height: 0px; 
+            overflow: hidden; 
+            transition: .4s; 
+        }
+        .lessInfoBtn{
+            display: none;
+        }
+        .moreInfo.open{
+            height: auto;
+        }
+        .lessInfoBtn.open{
+            display: block;
+        }
+        .moreInfoBtn{
+            display: block;
+        }
+        .moreInfoBtn.open{
+            display: none;
+        }
     }
 </style>

@@ -11,7 +11,17 @@
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
+		<div class="header border-b-2 border-amber-50/[.1] pb-1">
+			<div class="col-span-1 py-2 footerCenter">
+				<img src="/logoW.png" />
+			</div>
+		</div>
 		<div style="display: contents">%sveltekit.body%</div>
+		<div class="footer border-t-2 border-amber-50/[.1]">
+			<div class="col-span-1 py-4 footerCenter">
+				<img src="/logoW.png" />
+			</div>
+		</div>
 	</body>
 </html>
 
@@ -23,6 +33,20 @@
 		background-color: #000;
 		color: #F0F0F0; 
 		font-family: "Quicksand", sans-serif;
+	}
+	.header{
+		background-color: rgba(15, 15, 15, 1);
+		z-index: 3;
+	}
+
+	.footer{
+		background-color: rgba(15, 15, 15, 1);
+	}
+	.header img{
+		width: 100px; 
+	}
+	.footer img{
+		width: 130px; 
 	}
 	.container{
 		width: 100%; 
@@ -54,6 +78,7 @@
 	}
    
 	.sideBar{
+		z-index: 5;
     background-color: rgba(15, 15, 15, 1);
 	position: relative;
   }
@@ -155,5 +180,16 @@
       opacity: 0;
       z-index: -1;
     }
+  }
+  .footerCenter{
+	    margin: 0 auto;
+		width: 25%;
+		display: flex;
+    	flex-direction: column;
+    	align-items: center;
+  }
+
+  .footerCenter h2{
+	text-align: center;
   }
 </style>

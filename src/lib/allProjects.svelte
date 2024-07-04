@@ -132,7 +132,6 @@
       font-size: 1.7rem;
   }
   ul.projectOverview li p{
-     opacity: .3;
      font-size: 1rem;
   }
   img.coverImg{
@@ -182,7 +181,7 @@
   .cardPrev img:hover{
     height: auto;
     z-index: 6;
-    transform: rotate(0deg) scale(1.3);
+    transform: rotate(0deg) scale(1.1);
     -webkit-box-shadow: 0px 0px 38px 4px rgba(0,0,0,0.63);
     -moz-box-shadow: 0px 0px 38px 4px rgba(0,0,0,0.63);
     box-shadow: 0px 0px 38px 4px rgba(0,0,0,0.63);
@@ -194,6 +193,12 @@
     }
     to {
       opacity: 1;
+    }
+  }
+
+  @media (max-width:992px){
+    ul.projectOverview li{
+      width: 100%;
     }
   }
 </style>

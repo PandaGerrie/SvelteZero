@@ -11,7 +11,9 @@
     let revName = '';
     let revBody = '';
     let revImg = '';
-    let components; 
+    let components;
+    let bgCol1 = 'rgba(30, 30, 30, 1)' ;
+    let bgCol2 = 'rgba(30, 30, 30, 1)' ;
 
     let data = [];
     let error = null;
@@ -32,32 +34,36 @@
                 projectObject(where: {id: "` + projectID + `"}) {
                     projectFeature1
                     projectFeature2
+                    projectFeature3
                     description
                     basicPageInfo {
-                    title
-                    icon {
-                        url
-                    }
+                        title
+                        icon {
+                            url
+                        }
+                        backgroundColorGradient {
+                            hex
+                        }
                     }
                     components {
                     ... on CardType {
-                        title
-                        typeDescription
-                        cards(first: 20) {
-                        url
-                        }
-                        id
-                    }
+                            title
+                            typeDescription
+                            cards(first: 20) {
+                                url
+                            }
+                            id
+                        }   
                     }
                     rev {
-                    reviewBody
-                    reviewUser
-                    stars {
-                        url
-                    }
+                        reviewBody
+                        reviewUser
+                        stars {
+                            url
+                        }
                     }
                 }
-                }
+            }
           `
           })
         });
@@ -79,13 +85,19 @@
         feat2 = data.projectFeature2;
         feat3 = data.projectFeature3;
         projTitle = data.basicPageInfo.title;
+        if (data.basicPageInfo.backgroundColorGradient.length != 0){
+            bgCol1 = data.basicPageInfo.backgroundColorGradient[1].hex;
+            bgCol2 =data.basicPageInfo.backgroundColorGradient[0].hex;
+        }
+        projTitle = data.basicPageInfo.title;
         if (data.rev != null){
             revName = data.rev.reviewUser;
             revBody = data.rev.reviewBody;
             revImg = data.rev.stars.url;
         }
         components = data.components;
-        console.log(revBody);
+        console.log(bgCol1);
+        console.log(bgCol2);
       } catch (err) {
         error = err.message;
         console.error('Fetch error:', err);
@@ -96,19 +108,18 @@
 
 <section>
     <div class="container mx-auto">
-      
-      <div class="grid grid-cols-4 border-y-2 border-amber-50/[.1]">
-        <div class="col-span-1 align-start py-8 border-e-2 border-amber-50/[.1] sideBar">
+      <div class="grid grid-cols-4 border-y-2 border-amber-50/[.1] max-[992px]:grid-cols-1">
+        <div class="col-span-1 align-start py-8 border-e-2 border-amber-50/[.1] sideBar max-[992px]:pb-0">
          <Side title="{projTitle}" about="false" cta="false" description="{description}" back="/projects" feat1="{feat1}" feat2="{feat2}" feat3="{feat3}" revName="{revName}" revBody="{revBody}" revImg="{revImg}"/>
         </div>
-        <div class="col-span-3 px-10 py-10 contentBar">
+        <div class="col-span-3 px-10 py-10 contentBar" style="--bgCol1: {bgCol1};--bgCol2: {bgCol2};">
             <!-- PROJECT ASSETS HERE -->
              {#if components && components.length > 0}
                 {#each components as comp}
                 <div class="cardTypeBlock pb-10 mb-10 border-b border-amber-50/[.1]">
                     <h2 class="text-2xl">{comp.title}</h2>
                     <p class="text-sm text-white/[.5] leading-relaxed mb-5 mt-1">{comp.typeDescription}</p>
-                    <div class="cardgrid grid grid-cols-8 gap-3 pb-4">
+                    <div class="cardgrid grid grid-cols-8 gap-3 pb-4 max-[992px]:grid-cols-3">
                         {#each comp.cards as card}
                             <img class="col-span-1 gridCard rounded-md" src="{card.url}">
                         {/each}
@@ -141,7 +152,11 @@
         
     }
     .gridCard:hover{
-       transform: scale(1.9);
+       transform: scale(1.8) rotate(3deg);
+    }
+    .contentBar{
+        background: rgb(0,0,0);
+        background: linear-gradient(141deg, var(--bgCol2) 0%, var(--bgCol1) 100%);
     }
     @keyframes fadeIn {
     from {

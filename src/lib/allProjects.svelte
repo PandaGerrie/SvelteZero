@@ -66,7 +66,7 @@
 <ul class="projectOverview">
   {#each data as post}
     <li class="py-14 border border-amber-50/[.1]">
-        <a href="http://localhost:5173/projects/{post.id}">
+        <a href="/{post.id}">
             <div class="cardPrev mb-10"> 
               {#each post.basicPageInfo.cardGallery as card}
                 <img src="{card.url}">

@@ -17,7 +17,7 @@
           body: JSON.stringify({
             query: `
             {
-                projectObjects {
+                projectObjects (orderBy: order_ASC){
                     id
                     basicPageInfo {
                       title

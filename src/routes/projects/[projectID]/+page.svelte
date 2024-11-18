@@ -49,7 +49,7 @@
                     ... on CardType {
                             title
                             typeDescription
-                            cards(first: 20) {
+                            cards(first: 1000) {
                                 url
                             }
                             id

@@ -141,6 +141,7 @@
 </section>
 
 <style>
+html, body{max-width: 100vw; overflow-x: hidden;}
     .cardTypeBlock{
         opacity: 0;
         animation: fadeIn 1.5s ease-in-out forwards;
@@ -153,6 +154,7 @@
     }
     .gridCard:hover{
        transform: scale(1.9) rotate(3deg);
+z-index: 20; 
     }
     .contentBar{
         background: rgb(0,0,0);

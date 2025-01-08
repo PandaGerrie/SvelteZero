@@ -119,7 +119,7 @@
                 <div class="cardTypeBlock pb-10 mb-10 border-b border-amber-50/[.1]">
                     <h2 class="text-2xl">{comp.title}</h2>
                     <p class="text-sm text-white/[.5] leading-relaxed mb-5 mt-1">{comp.typeDescription}</p>
-                    <div class="cardgrid grid grid-cols-8 gap-3 pb-4 max-[992px]:grid-cols-3">
+                    <div class="cardgrid grid grid-cols-7 gap-3 pb-4 max-[992px]:grid-cols-3">
                         {#each comp.cards as card}
                             <img class="col-span-1 gridCard rounded-md" src="{card.url}">
                         {/each}
@@ -152,7 +152,7 @@
         
     }
     .gridCard:hover{
-       transform: scale(1.8) rotate(3deg);
+       transform: scale(1.9) rotate(3deg);
     }
     .contentBar{
         background: rgb(0,0,0);
